@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import { Link } from "react-router-dom";
-import { Alert } from "./Alert";
 
 export function Login() {
   const [user, setUser] = useState({
@@ -20,6 +19,7 @@ export function Login() {
     e.preventDefault();
     setError("");
     try {
+      if (user.email.trim() === '' || user.password.trim() === '') return
       await login(user.email, user.password);
     } catch (error) {
       setError(error.message);
@@ -28,12 +28,13 @@ export function Login() {
 
   return (
     <div className="w-full max-w-xs m-auto">
-      {error && <Alert mesagge={error} />}{" "}
+      {error && <p>error</p>}
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-6 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
+          <h1 className="font-bold text-center">User Login</h1>
           <label
             htmlFor="email"
             className="block text-gray-700 text-sm font-fold mb-2"

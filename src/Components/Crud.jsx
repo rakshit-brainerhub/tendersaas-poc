@@ -15,9 +15,7 @@ export function Crud() {
   const [id, setId] = useState("");
 
   const [show, setShow] = useState(false);
-
   const [val, setVal] = useState([]);
-
   const value = collection(db, "patients");
 
   useEffect(() => {
@@ -29,6 +27,7 @@ export function Crud() {
   }, []);
 
   const handleCreate = async () => {
+    if(fname.trim() === '' || lname.trim() === '') return
     await addDoc(value, { firstName: fname, lastName: lname });
   };
 
@@ -45,6 +44,7 @@ export function Crud() {
   };
 
   const handleUpdate = async () => {
+    if(fname.trim() === '' || lname.trim() === '') return
     const updateData = doc(db, "patients", id);
     await updateDoc(updateData, { firstName: fname, lastName: lname });
     setShow(false);
@@ -76,7 +76,7 @@ export function Crud() {
         <button
           onClick={handleCreate}
           radius="full"
-          className=" bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+          className=" bg-black px-4 py-2 rounded-xl text-white shadow-lg"
         >
           Create Order
         </button>
@@ -84,35 +84,37 @@ export function Crud() {
         <button
           onClick={handleUpdate}
           radius="full"
-          className=" bg-gradient-to-tr  from-blue-500 text-white shadow-lg"
+          className=" bg-black px-4 py-2 rounded-xl text-white shadow-lg"
         >
-          Update Patient
+          Update Order
         </button>
       )}
-      <h1 className="pb-5 pt-5 text-2xl text-red-700">The patients are: </h1>
+      <h1 className="pb-5 pt-5 text-2xl text-red-700">The orders are: </h1>
       {val.map((values) => (
         <div key={values.id}>
           <h1 className="pb-2">
-            {values.firstName}, {values.lastName}
+            {values.firstName} {values.lastName}
           </h1>
+          <div className="flex justify-around gap-4">
           <button
-            className="bg-red-400"
+            className="bg-red-400 px-4 py-2 rounded-xl"
             color="danger"
             variant="bordered"
             onClick={() => handleDelete(values.id)}
           >
-            Delete user
+            Delete Order
           </button>
           <button
-            className="bg-yellow-200 mx-6"
+            className="bg-yellow-200 px-4 py-2 rounded-xl"
             color="primary"
             variant="bordered"
             onClick={() =>
               handleEdit(values.id, values.firstName, values.lastName)
             }
           >
-            Edit user
+            Edit Order
           </button>
+          </div>
           <br />
           <br />
         </div>

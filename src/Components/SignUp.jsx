@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
-import { Alert } from "./Alert";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 
 export function SignUp() {
   const [user, setUser] = useState({
@@ -22,9 +20,10 @@ export function SignUp() {
     setError("");
 
     try {
+      if (user.email.trim() === '' || user.password.trim() === '') return
       await signUp(user.email, user.password);
     } catch (error) {
-      toast.error(error.message);
+      alert(error.message);
       console.error("Signup Error:", error.code, error.message);
 
       if (error.code === "auth/email-already-in-use") {
@@ -37,12 +36,13 @@ export function SignUp() {
 
   return (
     <div className="w-full max-w-xs m-auto">
-      {error && <Alert mesagge={error} />}{" "}
+      {error  && <p>error</p>}
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-6 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
+        <h1 className="font-bold text-center">User Signup</h1>
           <label
             htmlFor="email"
             className="block text-gray-700 text-sm font-fold mb-2"

@@ -11,7 +11,6 @@ import {
 import { auth, db } from "../firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 export const authContext = createContext();
 export const useAuth = () => {
@@ -49,7 +48,7 @@ export function AuthProvider({ children }) {
         }
       });
     })
-    .catch((error) => toast.info(error.message));
+    .catch((error) => alert(error.message));
   };
 
   const logOut = () => signOut(auth);
