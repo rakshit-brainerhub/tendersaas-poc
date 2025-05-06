@@ -1,7 +1,9 @@
-import { useAuth } from "../context/authContext";
-import NavBar from "./NavBar";
+import React from 'react'
 
-export function AdminView() {
+import { useAuth } from "../context/authContext";
+import NavBar from "../Components/NavBar";
+
+export function ContractorView() {
   const { loading } = useAuth();
 
   if (loading) return <h1>Loading</h1>;
@@ -11,8 +13,10 @@ export function AdminView() {
       <NavBar />
 
       <div className="w-full flex flex-col items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
-        <p>admin logged in</p>
+        <p>Contractor logged in</p>
       </div>
     </div>
   );
 }
+
+export default ContractorView

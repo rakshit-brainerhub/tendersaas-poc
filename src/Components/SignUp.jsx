@@ -44,7 +44,7 @@ export function SignUp() {
         className="bg-white shadow-md rounded px-6 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
-          <h1 className="font-bold text-center">User Signup</h1>
+          <h1 className="font-bold text-center">Signup Page</h1>
           <label
             htmlFor="email"
             className="block text-gray-700 text-sm font-fold mb-2"
@@ -95,7 +95,7 @@ export function SignUp() {
         </div>
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          Register
+          Signup
         </button>
       </form>
       <p className="my-4 text-sm flex justify-between px-5">

@@ -34,7 +34,7 @@ export function Login() {
         className="bg-white shadow-md rounded px-6 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
-          <h1 className="font-bold text-center">User Login</h1>
+          <h1 className="font-bold text-center">Login Page</h1>
           <label
             htmlFor="email"
             className="block text-gray-700 text-sm font-fold mb-2"
@@ -69,7 +69,7 @@ export function Login() {
         </div>
       </form>
       <p className="my-4 text-sm flex justify-between px-4">
-        Don't have an account?<Link to={"/signUp"}>Register</Link>
+        Don't have an account?<Link to={"/signUp"}>Signup</Link>
       </p>
     </div>
   );
