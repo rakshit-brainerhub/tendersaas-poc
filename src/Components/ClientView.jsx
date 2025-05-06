@@ -1,8 +1,9 @@
+import React from 'react'
+
 import { useAuth } from "../context/authContext";
-import { Crud } from "./Crud";
 import NavBar from "./NavBar";
 
-export function Home() {
+export function ClientView() {
   const { loading } = useAuth();
 
   if (loading) return <h1>Loading</h1>;
@@ -12,8 +13,10 @@ export function Home() {
       <NavBar />
 
       <div className="w-full flex flex-col items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
-        <Crud />
+        <p>Client logged in</p>
       </div>
     </div>
   );
 }
+
+export default ClientView
